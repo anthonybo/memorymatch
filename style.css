@@ -1,0 +1,207 @@
+body {
+    margin: 0;
+    /*background-color: #adadad;*/
+    background: url('images/background.gif') center center no-repeat;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    overflow: hidden;
+    height: 100vh;
+    font-size: 0;
+}
+
+body > * {
+    /*font-size: 1rem;*/
+}
+
+header {
+    /*display: flex;*/
+    /*justify-content: center;*/
+    /*align-items: center;*/
+}
+
+.header-style {
+    /*background-color: black;*/
+    height: 120px;
+    width: 100vw;
+    /*width: 50px;*/
+    /*background: url('images/logo.png') no-repeat;*/
+}
+
+.header-title {
+    /*font-family: 'Press Start 2P', cursive;*/
+    color: white;
+    text-shadow: 2px 2px black;
+    font-size: 40px;
+    text-align: center;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.header-settings {
+    color: white;
+    font-size: 10px;
+    text-align: right;
+    margin-right: 50px;
+}
+
+.header-settings a {
+    text-decoration: none;
+    color: white;
+
+}
+
+.header-about {
+    color: white;
+    font-size: 10px;
+    text-align: right;
+    margin-right: 50px;
+}
+
+.header-about a {
+    text-decoration: none;
+    color: white;
+}
+
+.header-logo {
+    /*margin: 0;*/
+    /*padding: 0;*/
+    position: absolute;
+}
+
+.stats-container {
+    /*background-color: black;*/
+    width: 20vw;
+    height: 60vh;
+    /*margin: 60px 10px;*/
+    display: inline-block;
+    vertical-align: top;
+    font-size: 1rem;
+}
+
+.stats-title {
+    color: white;
+    text-align: center;
+}
+
+.label {
+    color: white;
+    margin-left: 10px;
+}
+
+#game-area {
+    /*border: 2px solid firebrick;*/
+    height: 80vh;
+    width: 79vw;
+    display: inline-block;
+    /*cursor: pointer;*/
+}
+
+.cardContainer {
+    display: inline-block;
+    width: 16.6%;
+    height: 33%;
+    /*float: left;*/
+}
+
+.card {
+    height: 80%;
+    width: 80%;
+    position: relative;
+    left: 10%;
+    right: 10%;
+    cursor: url('images/cursor.cur'), auto;;
+}
+
+.card img {
+    height: 100%;
+    width: 100%;
+}
+
+.front, .back {
+    height: 100%;
+    /*background-size: cover;*/
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    width: 100%;
+}
+
+.front {
+    background-image: url('images/front.png');
+}
+
+.back {
+    background-image: url('images/bowser.png');
+}
+
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+}
+
+.overlay {
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    overflow: auto;
+    top: 0px;
+    left: 0px;
+    background: rgba(0, 0, 0, 0.6); /*can be anything, of course*/
+    overflow: hidden;
+
+}
+
+.attempts .value {
+    color: firebrick;
+}
+
+.games-played .value {
+    color: firebrick;
+}
+
+.accuracy .value {
+    color: firebrick;
+}
+
+.reset {
+    -moz-box-shadow: 0px 1px 0px 0px #e67a73;
+    -webkit-box-shadow: 0px 1px 0px 0px #e67a73;
+    box-shadow: 0px 1px 0px 0px #e67a73;
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #e4685d), color-stop(1, #eb675e));
+    background:-moz-linear-gradient(top, #e4685d 5%, #eb675e 100%);
+    background:-webkit-linear-gradient(top, #e4685d 5%, #eb675e 100%);
+    background:-o-linear-gradient(top, #e4685d 5%, #eb675e 100%);
+    background:-ms-linear-gradient(top, #e4685d 5%, #eb675e 100%);
+    background:linear-gradient(to bottom, #e4685d 5%, #eb675e 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#e4685d', endColorstr='#eb675e',GradientType=0);
+    background-color:#e4685d;
+    -moz-border-radius:6px;
+    -webkit-border-radius:6px;
+    border-radius:6px;
+    border:1px solid #ffffff;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Courier New;
+    font-size:15px;
+    font-weight:bold;
+    padding:10px 22px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #b23e35;
+}
+.reset:hover {
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #eb675e), color-stop(1, #e4685d));
+    background:-moz-linear-gradient(top, #eb675e 5%, #e4685d 100%);
+    background:-webkit-linear-gradient(top, #eb675e 5%, #e4685d 100%);
+    background:-o-linear-gradient(top, #eb675e 5%, #e4685d 100%);
+    background:-ms-linear-gradient(top, #eb675e 5%, #e4685d 100%);
+    background:linear-gradient(to bottom, #eb675e 5%, #e4685d 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#eb675e', endColorstr='#e4685d',GradientType=0);
+    background-color:#eb675e;
+}
+.reset:active {
+    position:relative;
+    top:1px;
+}
