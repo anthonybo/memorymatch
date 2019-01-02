@@ -191,4 +191,5 @@ function resetGame() {
     // var accuracy = $('.accuracy .value').text() ;
     // $('.accuracy .value').text('0');
     // console.log(accuracy);
+    
 }
