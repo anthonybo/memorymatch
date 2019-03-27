@@ -347,24 +347,6 @@ h3,h1 {
 
 }
 
-.leaderboard-users div {
-    margin: 5px;
-    font-size: 1.2vw;
-}
-
-.side-bar {
-    width: 20vw;
-    max-width: 20vw;
-    /*height: 55vh;*/
-    /*margin: 60px 10px;*/
-    display: inline-block;
-    vertical-align: top;
-    font-size: 1rem;
-    overflow-y: auto;
-    height: 80vh;
-
-}
-
 #myPrompt{
     margin-top: 5px;
     display:none;
@@ -456,6 +438,16 @@ input#promptAnswer {
 
 /*// Mobile Display*/
 @media screen and (max-width: 600px) {
+    .side-bar-mobile {
+        max-width: 50vw;
+        vertical-align: top;
+        font-size: 1rem;
+        overflow-y: auto;
+        height: 80vh;
+        position: absolute;
+        top: 20%;
+        right: 0;
+    }
 
     #game-area {
         /*border: 2px solid firebrick;*/
@@ -474,6 +466,56 @@ input#promptAnswer {
         padding: 0;
         font-size: 4vmin;
     }
+
+    .arrow,
+    .arrow:before {
+        position: absolute;
+        right: 0;
+    }
+
+    .arrow {
+        width: 20px;
+        height: 20px;
+        top: 50%;
+        margin: -20px 0 0 -20px;
+        -webkit-transform: rotate(140deg);
+        border-left: none;
+        border-top: none;
+        border-right: 2px #fff solid;
+        border-bottom: 2px #fff solid;
+        cursor: pointer;
+    }
+
+    .arrow:before {
+        content: "";
+        width: 20px;
+        height: 20px;
+        top: 50%;
+        margin: -10px 0 0 -10px;
+        border-left: none;
+        border-top: none;
+        border-right: 1px #fff solid;
+        border-bottom: 1px #fff solid;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+        animation-name: arrow;
+    }
+
+    @keyframes arrow {
+        0% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+            transform: translate(-10px, -10px);
+        }
+    }
+
+    .leaderboard-users div {
+        margin: 5px;
+        font-size: 2.2vw;
+    }
+
 
 }
 
@@ -496,6 +538,22 @@ input#promptAnswer {
         margin: 0 auto;
         padding: 0;
         font-size: 4vmin;
+    }
+
+    .side-bar {
+        width: 20vw;
+        max-width: 20vw;
+        display: inline-block;
+        vertical-align: top;
+        font-size: 1rem;
+        overflow-y: auto;
+        height: 80vh;
+
+    }
+
+    .leaderboard-users div {
+        margin: 5px;
+        font-size: 1.2vw;
     }
 
 }

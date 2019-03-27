@@ -11,6 +11,27 @@ function initApp() {
     // load_animation();
     // resetGame();
     audio();
+    clickHandler();
+}
+
+function clickHandler() {
+    $('#trigger-menu').click(triggerStats);
+}
+
+function triggerStats(){
+    console.log('Stats Triggered');
+
+    if ($(".side-bar")[0]) {
+        $('#side-bar').removeClass('side-bar');
+        $('#side-bar').addClass('side-bar-mobile')
+        $('#trigger-menu').css('right', '50%')
+    } else {
+        $('#side-bar').removeClass('side-bar-mobile');
+        $('#side-bar').addClass('side-bar')
+        $('#trigger-menu').css('right', '0')
+    }
+
+
 }
 
 function startGame() {
