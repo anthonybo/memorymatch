@@ -34,20 +34,7 @@ h3,h1 {
     /*background: url('images/logo.png') no-repeat;*/
 }
 
-.header-title {
-    /*font-family: 'Press Start 2P', cursive;*/
-    color: #5eff40;
-    text-shadow: 2px 2px black;
-    /*font-size: 40px;*/
-    font-size: 2rem;
-    text-align: center;
-    margin: 0 auto;
-    padding: 0;
-    /*display: flex;*/
-    /*justify-content: center;*/
-    /*align-items: center;*/
-    /*vertical-align: middle;*/
-}
+
 
 .header-settings {
     color: white;
@@ -148,6 +135,7 @@ h3,h1 {
     text-shadow: 1px 1px red;
     /*text-align: center;*/
     margin: 10px;
+    font-size: 3vmin;
 }
 
 .label {
@@ -155,15 +143,9 @@ h3,h1 {
     /*margin-left: 10px;*/
     text-shadow: 1px 1px black;
     margin: 10px;
+    font-size: 2vmin
 }
 
-#game-area {
-    /*border: 2px solid firebrick;*/
-    height: 80vh;
-    width: 79vw;
-    display: inline-block;
-    /*cursor: pointer;*/
-}
 
 .cardContainer {
     display: inline-block;
@@ -442,8 +424,6 @@ input#promptAnswer {
         transform: scale(1.0, 1.0);
         /*background-color: red;*/
     }
-
-
 }
 
 .hopFlipAnimation{
@@ -472,4 +452,50 @@ input#promptAnswer {
     margin: 0 auto;
     /*margin-top: 10px;*/
     cursor: pointer;
+}
+
+/*// Mobile Display*/
+@media screen and (max-width: 600px) {
+
+    #game-area {
+        /*border: 2px solid firebrick;*/
+        height: 80vh;
+        width: 100vw;
+        display: inline-block;
+        /*cursor: pointer;*/
+    }
+
+    .header-title {
+        color: #5eff40;
+        text-shadow: 2px 2px black;
+        font-size: 2rem;
+        text-align: right;
+        margin: 0 auto;
+        padding: 0;
+        font-size: 4vmin;
+    }
+
+}
+
+/*// Desktop Display*/
+@media screen and (min-width: 600px) {
+
+    #game-area {
+        /*border: 2px solid firebrick;*/
+        height: 80vh;
+        width: 79vw;
+        display: inline-block;
+        /*cursor: pointer;*/
+    }
+
+    .header-title {
+        color: #5eff40;
+        text-shadow: 2px 2px black;
+        font-size: 2rem;
+        text-align: center;
+        margin: 0 auto;
+        padding: 0;
+        font-size: 4vmin;
+    }
+
 }

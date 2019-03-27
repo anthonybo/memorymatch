@@ -28,7 +28,7 @@ function startGame() {
     var timer = 0;
 
     $('.back').hide();
-    console.log('starting game...' + '\n' + ' ');
+    // console.log('starting game...' + '\n' + ' ');
 
     $('.games-played .value').text(gamesPlayed);
     $('.accuracy .value').text(accuracy + '%');
@@ -367,7 +367,7 @@ function leaderboard(accuracy) {
     function submitPrompt() {
         var answer = promptAnswer.value; // Get the answer
         prompt.style.display = 'none';   // Hide the prompt
-        console.log(answer + ' ' + accuracy);
+        // console.log(answer + ' ' + accuracy);
         value.push(answer);
         value.push(accuracy);
 
