@@ -34,15 +34,6 @@ h3,h1 {
     /*background: url('images/logo.png') no-repeat;*/
 }
 
-
-
-.header-settings {
-    color: white;
-    font-size: 10px;
-    text-align: right;
-    margin-right: 50px;
-}
-
 .header-settings a {
     text-decoration: none;
     color: white;
@@ -56,21 +47,6 @@ h3,h1 {
     text-shadow: 1px 1px red;
     color: white;
     margin: 10px;
-}
-
-.header-settings-on-board-images {
-    width: 20vw;
-    height: 200px;
-    margin: 10px;
-    cursor: pointer;
-}
-
-.header-about {
-    color: white;
-    font-size: 10px;
-    text-align: right;
-    margin-right: 50px;
-    margin-top: 5px;
 }
 
 .header-about a {
@@ -516,7 +492,27 @@ input#promptAnswer {
         font-size: 2.2vw;
     }
 
+    .header-settings-on-board-images {
+        width: 28vw;
+        max-height: 200px;
+        margin: 10px;
+        cursor: pointer;
+    }
 
+    .header-settings {
+        color: white;
+        font-size: 10px;
+        text-align: right;
+        margin-right: 0px;
+    }
+
+    .header-about {
+        color: white;
+        font-size: 10px;
+        text-align: right;
+        margin-right: 0px;
+        margin-top: 5px;
+    }
 }
 
 /*// Desktop Display*/
@@ -556,4 +552,25 @@ input#promptAnswer {
         font-size: 1.2vw;
     }
 
+    .header-settings-on-board-images {
+        width: 20vw;
+        height: 200px;
+        margin: 10px;
+        cursor: pointer;
+    }
+
+    .header-settings {
+        color: white;
+        font-size: 10px;
+        text-align: right;
+        margin-right: 50px;
+    }
+
+    .header-about {
+        color: white;
+        font-size: 10px;
+        text-align: right;
+        margin-right: 50px;
+        margin-top: 5px;
+    }
 }
