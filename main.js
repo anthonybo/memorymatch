@@ -136,21 +136,26 @@ function startGame() {
                         }
                         previousTarget=this;
 
-                        if (matches > 0 || matches !==0 && attempts !==0) {
-                            if (attempts <= 0) {
-                                accuracy = 100;
-                                $('.accuracy .value').text(accuracy + '%');
-                                move(accuracy);
-                            } else {
-                                accuracy = Math.floor(matches / attempts * 100);
-                                $('.accuracy .value').text(accuracy + '%');
-                                move(accuracy);
-                            }
-                        } else {
-                            // accuracy = 0;
-                            $('.accuracy .value').text(accuracy + '%');
-                            move(accuracy);
-                        }
+                        // if (matches > 0 || matches !==0 && attempts !==0) {
+                        //     if (attempts <= 0) {
+                        //         accuracy = 100;
+                        //         $('.accuracy .value').text(accuracy + '%');
+                        //         move(accuracy);
+                        //     } else {
+                        //         accuracy = Math.floor(matches / attempts * 100);
+                        //         $('.accuracy .value').text(accuracy + '%');
+                        //         move(accuracy);
+                        //     }
+                        // } else {
+                        //     // accuracy = 0;
+                        //     $('.accuracy .value').text(accuracy + '%');
+                        //     move(accuracy);
+                        // }
+
+                        accuracy = matches / attempts * 100;
+                        accuracy = accuracy.toFixed(2);
+                        $('.accuracy .value').text(accuracy + '%');
+                        move(accuracy);
 
                         if(number_found === 9) {
                             // alert('You Won!' + '\n' + '# of attempts: ' + attempts + '\n' + 'Accuracy: ' + accuracy + '%');
@@ -350,21 +355,21 @@ function leaderboard_first_run(){
     if (localStorage.getItem("winner1") !== null){
         var winner_results1 = JSON.parse(localStorage.getItem("winner1"));
         winner_results1[0] = winner_results1[0].substring(0,10);
-        $('.leaderboard-users').append('<div>'+ '1) ' + winner_results1[0] + ': ' + winner_results1[1]+ '%' +'</div>');
+        $('.leaderboard-users').append('<div>'+ '1. ' + winner_results1[0] + ': ' + winner_results1[1]+ '%' +'</div>');
     } else {
         localStorage.setItem("winner1", JSON.stringify(default_value));
     }
     if(localStorage.getItem("winner2") !== null) {
         var winner_results2 = JSON.parse(localStorage.getItem("winner2"));
         winner_results2[0] = winner_results2[0].substring(0,10);
-        $('.leaderboard-users').append('<div>'+ '2) ' + winner_results2[0] + ': ' + winner_results2[1]+ '%' +'</div>');
+        $('.leaderboard-users').append('<div>'+ '2. ' + winner_results2[0] + ': ' + winner_results2[1]+ '%' +'</div>');
     } else {
         localStorage.setItem("winner2", JSON.stringify(default_value));
     }
     if(localStorage.getItem("winner3") !== null) {
         var winner_results3 = JSON.parse(localStorage.getItem("winner3"));
         winner_results3[0] = winner_results3[0].substring(0,10);
-        $('.leaderboard-users').append('<div>'+ '3) ' + winner_results3[0] + ': ' + winner_results3[1]+ '%' +'</div>');
+        $('.leaderboard-users').append('<div>'+ '3. ' + winner_results3[0] + ': ' + winner_results3[1]+ '%' +'</div>');
     } else {
         localStorage.setItem("winner3", JSON.stringify(default_value));
     }

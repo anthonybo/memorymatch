@@ -532,7 +532,7 @@ input#promptAnswer {
         font-size: 2rem;
         text-align: center;
         margin: 0 auto;
-        padding: 0;
+        padding-top: 15px;
         font-size: 4vmin;
     }
 
