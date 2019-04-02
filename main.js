@@ -106,6 +106,9 @@ function startGame() {
                             previousTarget=this;
                             matches++;
                             number_found++;
+                            attempts++;
+                            $('.attempts .value').text(attempts);
+
                             // console.log('%c Same! '+number_found,'background: #222; color: firebrick');
 
                             // console.log('same!' + ' ' + number_found);
