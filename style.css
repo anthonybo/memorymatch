@@ -3,7 +3,7 @@ body {
     /*background-color: #adadad;*/
     background: url('images/background.gif') center center no-repeat;
     background-repeat: no-repeat;
-    background-size: 100% 100%;
+    background-size: auto 100%;
     overflow: hidden;
     height: 100vh;
     font-size: 0;
@@ -136,7 +136,7 @@ h3,h1 {
     position: relative;
     left: 10%;
     right: 10%;
-    cursor: url('images/cursor.cur'), auto;;
+    cursor: url('images/Normal-Select.cur'), auto;
 }
 
 .card img {
@@ -393,13 +393,14 @@ input#promptAnswer {
 }
 
 .play-audio {
-    background: url('images/play.png') center center no-repeat;
+    background: #3fff00f5 url('images/play.png') center center no-repeat;
     background-size: 100% 100%;
     width: 30px;
     height: 30px;
     margin: 0 auto;
     /*margin-top: 10px;*/
     cursor: pointer;
+    border-radius: 50%;
 }
 
 .pause-audio {
@@ -414,6 +415,10 @@ input#promptAnswer {
 
 /*// Mobile Display*/
 @media screen and (max-width: 600px) {
+    .side-bar {
+        display: none;
+    }
+
     .side-bar-mobile {
         max-width: 50vw;
         vertical-align: top;
@@ -462,6 +467,19 @@ input#promptAnswer {
         cursor: pointer;
     }
 
+    /*.close-arrow {*/
+        /*width: 20px;*/
+        /*height: 20px;*/
+        /*top: 50%;*/
+        /*margin: -20px 0 0 -20px;*/
+        /*-webkit-transform: rotate(-45deg);*/
+        /*border-left: none;*/
+        /*border-top: none;*/
+        /*border-right: 2px #fff solid;*/
+        /*border-bottom: 2px #fff solid;*/
+        /*cursor: pointer;*/
+    /*}*/
+
     .arrow:before {
         content: "";
         width: 20px;
@@ -493,10 +511,19 @@ input#promptAnswer {
     }
 
     .header-settings-on-board-images {
-        width: 28vw;
-        max-height: 200px;
-        margin: 10px;
+        /*width: 28vw;*/
+        /*max-height: 200px;*/
+        /*margin: 10px;*/
         cursor: pointer;
+        float: left;
+        width: 50%;
+        height: 50%;
+        object-fit: cover;
+    }
+
+    #settings-container {
+        width: 100%;
+        height: 50vh;
     }
 
     .header-settings {
@@ -553,10 +580,20 @@ input#promptAnswer {
     }
 
     .header-settings-on-board-images {
-        width: 20vw;
-        height: 200px;
-        margin: 10px;
+        /*width: 28vw;*/
+        /*max-height: 200px;*/
+        /*margin: 10px;*/
         cursor: pointer;
+        float: left;
+        width: 50%;
+        height: 50%;
+        object-fit: cover;
+        object-position: bottom;
+    }
+
+    #settings-container {
+        width: 100%;
+        height: 50vh;
     }
 
     .header-settings {
