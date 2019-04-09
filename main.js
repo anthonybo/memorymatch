@@ -12,26 +12,39 @@ function initApp() {
     // resetGame();
     audio();
     clickHandler();
+    backgroundCheck();
 }
 
 function clickHandler() {
     $('#trigger-menu').click(triggerStats);
 }
 
+function backgroundCheck(){
+    var background = localStorage.getItem("background");
+
+    if(background !== null){
+        $('body').css({
+            'background': 'url('+ background +') no-repeat center fixed',
+            'background-size': 'auto 100%'
+        });
+    }
+}
+
 function triggerStats(){
-    console.log('Stats Triggered');
+    // console.log('Stats Triggered');
 
     if ($(".side-bar")[0]) {
         $('#side-bar').removeClass('side-bar');
         $('#side-bar').addClass('side-bar-mobile')
         $('#trigger-menu').css('right', '50%')
+        $('.arrow').css('-webkit-transform', 'rotate(-45deg)');
+
     } else {
         $('#side-bar').removeClass('side-bar-mobile');
         $('#side-bar').addClass('side-bar')
         $('#trigger-menu').css('right', '0')
+        $('.arrow').css('-webkit-transform', 'rotate(140deg)');
     }
-
-
 }
 
 function startGame() {
@@ -395,6 +408,10 @@ function leaderboard(accuracy) {
 
     function submitPrompt() {
         var answer = promptAnswer.value; // Get the answer
+        console.log(answer);
+        if(answer == ''){
+            answer = 'Anonymous'
+        }
         prompt.style.display = 'none';   // Hide the prompt
         // console.log(answer + ' ' + accuracy);
         value.push(answer);
@@ -450,13 +467,36 @@ function revert(whatToFlip){
 function settings() {
     var counter = 0;
 
-    $('.header-settings a').click(function() {
+    $('.header-settings a').click(function(event) {
+        $(window).click(function(event){
+            if(event.target.closest('#settings-container')){
+                return;
+            } else {
+                $(window).off('click');
+                $('.header-settings-on-board').empty();
+                $('.header-settings-on-board-images').remove();
+                $('.cardContainer').show();
+                $('.header-settings a').css('color','');
+
+                $('.header-about-on-board-title').empty();
+                $('.header-about-on-board-image').remove();
+                $('.header-about-on-board').empty();
+                $('.header-about a').css('color','');
+
+                $('#settings-container').remove();
+
+                counter = 0;
+            }
+        })
+        event.stopPropagation();
+
         $('.header-about-on-board-title').empty();
         $('.header-about-on-board-image').remove();
         $('.header-about-on-board').empty();
         $('.header-about a').css('color','');
 
         $('.header-settings a').css('color','red');
+        $('#settings-container').remove();
 
 
         counter++;
@@ -467,13 +507,14 @@ function settings() {
             $('.cardContainer').hide();
             counter++;
 
-            $('#game-area').prepend('<div class="header-settings-on-board">'+ 'Pick a Background: ' +'</div>');
-            $('#game-area').append('<img class="header-settings-on-board-images" src="images/background.gif">');
-            $('#game-area').append('<img class="header-settings-on-board-images" src="images/background2.gif" >');
-            $('#game-area').append('<img class="header-settings-on-board-images" src="images/background3.jpg">');
-            $('#game-area').append('<img class="header-settings-on-board-images" src="images/background4.gif">');
-            $('#game-area').append('<img class="header-settings-on-board-images" src="images/background5.gif">');
-            $('#game-area').append('<img class="header-settings-on-board-images" src="images/background6.gif">');
+            $('#game-area').prepend('<div id="settings-container">');
+            $('#settings-container').prepend('<div class="header-settings-on-board">'+ 'Pick a Background: ' +'</div>');
+            $('#settings-container').append('<img class="header-settings-on-board-images" src="images/background.gif">');
+            $('#settings-container').append('<img class="header-settings-on-board-images" src="images/background2.gif" >');
+            $('#settings-container').append('<img class="header-settings-on-board-images" src="images/background3.jpg">');
+            $('#settings-container').append('<img class="header-settings-on-board-images" src="images/background4.gif">');
+            $('#settings-container').append('<img class="header-settings-on-board-images" src="images/background5.gif">');
+            $('#settings-container').append('<img class="header-settings-on-board-images" src="images/background6.gif">');
 
 
             $('.header-settings-on-board-images').click( function() {
@@ -483,9 +524,11 @@ function settings() {
                 var image_path = $(this).attr('src');
                 // console.log(image_path);
 
+                localStorage.setItem("background", JSON.stringify(image_path));
+
                 $('body').css({
                     'background': 'url('+ image_path +') no-repeat center fixed',
-                    'background-size': '100% 100%'
+                    'background-size': 'auto 100%'
                 });
             });
 
@@ -504,10 +547,28 @@ function settings() {
 function about() {
     var counter = 0;
 
-    $('.header-about a').click(function() {
+    $('.header-about a').click(function(event) {
+        $(window).click(function(event){
+            if(event.target.closest('#settings-container')){
+                return;
+            } else {
+                $(window).off('click');
+                $('.header-about-on-board-title').empty();
+                $('.header-about-on-board').empty();
+                $('.header-about-on-board-image').remove();
+                $('.cardContainer').show();
+                $('.header-about a').css('color','');
+
+                $('#about-container').remove();
+
+                counter = 0;
+            }
+        })
+        event.stopPropagation();
         $('.header-settings-on-board').empty();
         $('.header-settings-on-board-images').remove();
         $('.header-settings a').css('color','');
+        $('#about-container').remove();
 
 
         $('.header-about a').css('color','red');
@@ -520,9 +581,10 @@ function about() {
             $('.cardContainer').hide();
             counter++;
 
-            $('#game-area').prepend('<div class="header-about-on-board-title">'+ 'About the author: ' +'</div>');
-            $('#game-area').append('<img class="header-about-on-board-image" src="images/portrait.png">');
-            $('#game-area').append('<div class="header-about-on-board">'+ 'I like to build applications ' +'</div>');
+            $('#game-area').prepend('<div id="about-container">');
+            $('#about-container').prepend('<div class="header-about-on-board-title">'+ 'About the author: ' +'</div>');
+            $('#about-container').append('<img class="header-about-on-board-image" src="images/portrait.png">');
+            $('#about-container').append('<div class="header-about-on-board">'+ 'I like to build applications ' +'</div>');
 
         } else if (counter >= 2) {
             // console.log('In Settings - 2 click');
@@ -548,7 +610,7 @@ function audio() {
             // console.log('clicked' + ' ' + counter);
             // $('.play-audio').removeClass('pause-audio').addClass('play-audio');
             $('.play-audio').css({
-                'background': 'url("images/pause.png") center center no-repeat',
+                'background': '#ff0000f5 url("images/pause.png") center center no-repeat',
                 'background-size': '100% 100%'
             });
             $('audio#mario-music')[0].play();
@@ -558,7 +620,7 @@ function audio() {
             counter = 0;
             // $('.play-audio').removeClass('play-audio').addClass('pause-audio');
             $('.play-audio').css({
-                'background': 'url("images/play.png") center center no-repeat',
+                'background': '#3fff00f5 url("images/play.png") center center no-repeat',
                 'background-size': '100% 100%'
             });
             $('audio#mario-music')[0].pause();
