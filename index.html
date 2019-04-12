@@ -4,35 +4,30 @@
     <title>Memory Match Game</title>
     <script type="text/javascript" src="main.js" defer></script>
     <script type="text/javascript" src="jquery.js"></script>
-
+    <link rel='shortcut icon' href='images/favicon.ico'>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/8bit-wonder" type="text/css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 </head>
 
 <body>
+
 <div class="overlay">
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <span class="winner-text"></span>
+        </div>
+
+    </div>
+
     <header class="header-style">
         <img src="images/logo.png" alt="" width="120px" class="header-logo">
         <h1 class="header-title">Mario's Memory Game</h1>
-        <h3 class="header-settings"><a href="#" target="_blank">Settings</a></h3>
-        <h3 class="header-about"><a href="#" target="_blank">About</a></h3>
+        <h3 class="header-settings"><a href="#" >Settings</a></h3>
+        <h3 class="header-about"><a href="#">About</a></h3>
     </header>
-
-    <div class="stats-container">
-        <h1 class="stats-title">Stats:</h1>
-        <div class="games-played">
-            <h3 class="label">Games Played: </h3>
-            <h3 class="value"></h3>
-        </div>
-        <div class="attempts">
-            <h3 class="label">Attempts:</h3>
-            <h3 class="value"></h3>
-        </div>
-        <div class="accuracy">
-            <h3 class="label">Accuracy:</h3>
-            <h3 class="value"></h3>
-        </div>
-        <button class="reset">Reset Game</button>
-    </div>
 
     <div id="game-area">
         <div class="cardContainer">
@@ -161,9 +156,50 @@
             </div>
         </div>
 
-
-
     </div>
+
+    <span class="arrow" id="trigger-menu"></span>
+    <div class="side-bar" id="side-bar">
+        <div class="stats-container">
+            <h1 class="stats-title">Stats:</h1>
+            <div class="games-played">
+                <h3 class="label">Games Played: </h3>
+                <h3 class="value"></h3>
+            </div>
+            <div class="attempts">
+                <h3 class="label">Attempts:</h3>
+                <h3 class="value"></h3>
+            </div>
+            <div class="accuracy">
+                <h3 class="label">Accuracy:</h3>
+                <h3 class="value"></h3>
+                <div id="myProgress">
+                    <div id="myBar"></div>
+                </div>
+            </div>
+            <button class="reset">Reset Game</button>
+
+            <div class="play-audio">
+                <audio id="mario-music">
+                    <source src="audio/Overworld%20Theme.mp3" type="audio/mpeg">
+                </audio>
+            </div>
+
+        </div>
+        <div class="leaderboard">
+            <h3 class="leaderboard-title">Leader Board</h3>
+            <div class="leaderboard-users"></div>
+        </div>
+
+        <div id="myPrompt" class="proptDiv">
+            <div id="promptQuestion"></div>
+            <input id="promptAnswer" type="text" />
+            <input id="promptButton" type="button" value="Submit" />
+        </div>
+    </div>
+
 </div>
+
+
 </body>
 </html>
