@@ -101,7 +101,7 @@ h3,h1 {
     /*font-size: 1rem;*/
     text-align: center;
     border: 2px dashed rgba(21, 22, 32, 0.98);
-    background-color: rgba(255, 255, 255, 0.11);
+    background-color: rgba(255, 255, 255, 0.77);
     border-radius: 7%;
     padding-bottom: 10px;
 }
@@ -244,6 +244,8 @@ h3,h1 {
     width: 100%;
     max-width: 100%;
     background-color: #ddd;
+    border: 1px solid black;
+    margin-top: 10px;
 }
 
 #myBar {
@@ -307,7 +309,7 @@ h3,h1 {
     font-size: 1rem;
     text-align: center;
     border: 2px dashed rgba(255, 124, 80, 0.98);
-    background-color: rgba(255, 255, 255, 0.11);
+    background-color: rgba(255, 255, 255, 0.77);
     border-radius: 7%;
     margin-top: 5px;
     text-shadow: 1px 1px white;
