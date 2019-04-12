@@ -74,11 +74,19 @@ function startGame() {
 
     $('.card').on('click',function() {
 
+        console.log('Current Target: ', this);
+        console.log('Previous Target: ', previousTarget);
+
     if(this === previousTarget) {
         // alert('BAD');
-        // console.log('Double Clicked');
+        // $(this).children('.back').show();
+        // $(this).children('.front').hide();
+        console.log('Double Clicked');
         counter = 1;
-    }  else {
+    } else if($(this).children().hasClass('matched')){
+        // console.log('HAS CLASS MATCHED');
+    } else {
+        console.log('Made it passed');
         counter++;
         // console.log('clicked' + ' '+counter);
 
@@ -100,104 +108,98 @@ function startGame() {
             cardTwo = this;
             // debugger;
             if( $(cardOne).children().hasClass('matched') && !$(cardTwo).children().hasClass('matched')) {
-                // console.log('Cheater! back is visible');
+                console.log('Cheater! back1 is visible');
                 $(cardTwo).children('.back').fadeOut(500);
                 $(cardTwo).children('.front').fadeIn(500);
-
             } else if ($(cardTwo).children().hasClass('matched') && !$(cardOne).children().hasClass('matched')) {
-                // console.log('Cheater! back is visible');
+                console.log('Cheater! back2 is visible');
                 $(cardOne).children('.back').fadeOut(500);
                 $(cardOne).children('.front').fadeIn(500);
             } else if ($(cardTwo).children().hasClass('matched') && $(cardOne).children().hasClass('matched')) {
-                // console.log('Cheater! back is visible');
+                console.log('Cheater! backBoth is visible');
             } else {
-                window.setTimeout(
-                    function() {
-                        compare2 = filename;
+                compare2 = filename;
 
-                        if (compare1 == compare2){
-                            previousTarget=this;
-                            matches++;
-                            number_found++;
-                            attempts++;
-                            $('.attempts .value').text(attempts);
+                if (compare1 == compare2){
+                    matches++;
+                    number_found++;
+                    attempts++;
+                    $('.attempts .value').text(attempts);
 
-                            // console.log('%c Same! '+number_found,'background: #222; color: firebrick');
+                    // console.log('%c Same! '+number_found,'background: #222; color: firebrick');
 
-                            // console.log('same!' + ' ' + number_found);
-                            // console.log(compare1 +' '+ compare2);
-                            // console.log('accuracy: '+accuracy);
-                            $(cardOne).children().addClass('matched');
-                            $(cardTwo).children().addClass('matched');
-                        } else {
-                            // console.log('different');
-                            var newAttemptsValue = $('.attempts .value').text();
+                    // console.log('same!' + ' ' + number_found);
+                    // console.log(compare1 +' '+ compare2);
+                    // console.log('accuracy: '+accuracy);
+                    $(cardOne).children().addClass('matched');
+                    $(cardTwo).children().addClass('matched');
+                } else {
+                    // console.log('different');
+                    var newAttemptsValue = $('.attempts .value').text();
 
-                            if(newAttemptsValue == 0 ) {
-                                attempts = 0;
-                                number_found = 0;
-                                matches = 0;
-                                accuracy = 0;
-                            }
-                            attempts++;
+                    if(newAttemptsValue == 0 ) {
+                        attempts = 0;
+                        number_found = 0;
+                        matches = 0;
+                        accuracy = 0;
+                    }
+                    attempts++;
 
-                            $('.attempts .value').text(attempts);
+                    $('.attempts .value').text(attempts);
 
-                            $(cardOne).children('.back').fadeOut(500);
-                            $(cardOne).children('.front').fadeIn(500);
-                            $(cardTwo).children('.back').fadeOut(500);
-                            $(cardTwo).children('.front').fadeIn(500);
-                            // $(this).children().find(".back").fadeOut;
-                            // $(this).children().find(".front").fadeIn();
-                        }
-                        previousTarget=this;
+                    $(cardOne).children('.back').fadeOut(500);
+                    $(cardOne).children('.front').fadeIn(500);
+                    $(cardTwo).children('.back').fadeOut(500);
+                    $(cardTwo).children('.front').fadeIn(500);
+                    // $(this).children().find(".back").fadeOut;
+                    // $(this).children().find(".front").fadeIn();
+                }
+                previousTarget=this;
 
-                        // if (matches > 0 || matches !==0 && attempts !==0) {
-                        //     if (attempts <= 0) {
-                        //         accuracy = 100;
-                        //         $('.accuracy .value').text(accuracy + '%');
-                        //         move(accuracy);
-                        //     } else {
-                        //         accuracy = Math.floor(matches / attempts * 100);
-                        //         $('.accuracy .value').text(accuracy + '%');
-                        //         move(accuracy);
-                        //     }
-                        // } else {
-                        //     // accuracy = 0;
-                        //     $('.accuracy .value').text(accuracy + '%');
-                        //     move(accuracy);
-                        // }
+                // if (matches > 0 || matches !==0 && attempts !==0) {
+                //     if (attempts <= 0) {
+                //         accuracy = 100;
+                //         $('.accuracy .value').text(accuracy + '%');
+                //         move(accuracy);
+                //     } else {
+                //         accuracy = Math.floor(matches / attempts * 100);
+                //         $('.accuracy .value').text(accuracy + '%');
+                //         move(accuracy);
+                //     }
+                // } else {
+                //     // accuracy = 0;
+                //     $('.accuracy .value').text(accuracy + '%');
+                //     move(accuracy);
+                // }
 
-                        accuracy = matches / attempts * 100;
-                        accuracy = accuracy.toFixed(2);
-                        $('.accuracy .value').text(accuracy + '%');
-                        move(accuracy);
+                accuracy = matches / attempts * 100;
+                accuracy = accuracy.toFixed(2);
+                $('.accuracy .value').text(accuracy + '%');
+                move(accuracy);
 
-                        if(number_found === 9) {
-                            // alert('You Won!' + '\n' + '# of attempts: ' + attempts + '\n' + 'Accuracy: ' + accuracy + '%');
-                            winner_modal(attempts,accuracy);
-                        }
-                        counter = 0;
-                    },
-                    0
-                );
+                if(number_found === 9) {
+                    // alert('You Won!' + '\n' + '# of attempts: ' + attempts + '\n' + 'Accuracy: ' + accuracy + '%');
+                    winner_modal(attempts,accuracy);
+                }
+                counter = 0;
+
             }
 
         }
     }
     }).on('dblclick', function() {
-        // console.log('Double Click#2');
-
-        if( !$(cardTwo).children().hasClass('matched') ) {
-            // console.log('Double Click Flip');
-            $(cardTwo).children('.back').fadeOut(500);
-            $(cardTwo).children('.front').fadeIn(500);
-        } else if( !$(cardOne).children().hasClass('matched') ) {
-            // console.log('Double Click Flip');
-            $(cardOne).children('.back').fadeOut(500);
-            $(cardOne).children('.front').fadeIn(500);
-
-        }
+        console.log('Double Click#2');
+        //
+        // if( !$(cardTwo).children().hasClass('matched') ) {
+        //     // console.log('Double Click Flip');
+        //     $(cardTwo).children('.back').fadeOut(500);
+        //     $(cardTwo).children('.front').fadeIn(500);
+        // } else if( !$(cardOne).children().hasClass('matched') ) {
+        //     // console.log('Double Click Flip');
+        //     $(cardOne).children('.back').fadeOut(500);
+        //     $(cardOne).children('.front').fadeIn(500);
+        //
+        // }
 
         // clearTimeout(timer);
 
@@ -408,7 +410,7 @@ function leaderboard(accuracy) {
 
     function submitPrompt() {
         var answer = promptAnswer.value; // Get the answer
-        console.log(answer);
+        // console.log(answer);
         if(answer == ''){
             answer = 'Anonymous'
         }
